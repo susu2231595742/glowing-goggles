@@ -147,9 +147,14 @@ public class StudentManagementSystem {
         System.out.println("\n----- 模糊查询学生 -----");
         String keyword = getStringInput("请输入要查询的姓名关键字: ");
         
+        if (keyword.isEmpty()) {
+            System.out.println("查询关键字不能为空！");
+            return;
+        }
+        
         ArrayList<Student> result = new ArrayList<>();
         for (Student student : studentList) {
-            if (student.getName().contains(keyword)) {
+            if (student.getName().toLowerCase().contains(keyword.toLowerCase())) {
                 result.add(student);
             }
         }
